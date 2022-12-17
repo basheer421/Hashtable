@@ -1,16 +1,22 @@
-NAME = Hashtable.a
-FILES = Hashtable.c
+NAME = ht_test
+FILES = Hashtable/ht_get.c \
+	Hashtable/ht_hash.c \
+	Hashtable/ht_new.c \
+	Hashtable/ht_set.c \
+	Hashtable/ht_isempty.c \
+	Hashtable/ht_contains.c \
+	ht_test.c
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g
 OBJS = $(FILES:.c=.o)
 
 all: $(NAME)
 
 reqs:
-	(cd ./libft && make bonus && cp libft.a ../libft.a)
+	(cd ./libft && make && cp libft.a ../Hashtable/)
 
 $(NAME): $(OBJS) reqs
-	ar rc $(NAME) $(OBJS) libft.a
+	$(CC) $(OBJS) Hashtable/libft.a -o $(NAME)
 
 clean:
 	rm -f $(OBJS)
@@ -18,5 +24,6 @@ clean:
 
 fclean:	clean
 	rm -f $(NAME) libft.a
+	(cd ./libft && make fclean)
 
 re:	fclean all
