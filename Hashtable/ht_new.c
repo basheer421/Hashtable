@@ -6,7 +6,7 @@
 /*   By: bammar <bammar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 00:13:56 by bammar            #+#    #+#             */
-/*   Updated: 2022/12/18 02:04:59 by bammar           ###   ########.fr       */
+/*   Updated: 2022/12/23 23:04:38 by bammar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 t_ht	*ht_new(size_t size)
 {
-	t_ht		*table;
+	t_ht	*table;
 	size_t	i;
 
 	table = malloc(sizeof(t_ht));
