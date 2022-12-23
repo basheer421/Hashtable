@@ -6,7 +6,7 @@
 /*   By: bammar <bammar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 00:28:18 by bammar            #+#    #+#             */
-/*   Updated: 2022/12/23 23:05:55 by bammar           ###   ########.fr       */
+/*   Updated: 2022/12/24 01:25:28 by bammar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	ht_set(t_ht *table, char *key, void *value)
 
 	if (ht_contains(table, key))
 		return (0);
-	index = ht_hash(table, key);
+	index = ht_hash(table, ft_strdup(key));
 	node = table->array[index];
 	if (node->key == NULL)
 	{
@@ -33,8 +33,9 @@ int	ht_set(t_ht *table, char *key, void *value)
 	node->next = malloc(sizeof(t_node));
 	if (!node->next)
 		return (-1);
-	node->key = key;
-	node->value = value;
+	node = node->next;
+	node->key = ft_strdup(key);
+	node->value = ft_strdup(value);
 	node->next = NULL;
 	table->size++;
 	return (1);

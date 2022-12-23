@@ -6,7 +6,7 @@
 /*   By: bammar <bammar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 00:52:51 by bammar            #+#    #+#             */
-/*   Updated: 2022/12/23 23:12:03 by bammar           ###   ########.fr       */
+/*   Updated: 2022/12/24 01:46:36 by bammar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,21 +15,25 @@
 void	*ht_get(t_ht *table, const char *key)
 {
 	unsigned int	index;
-	int				string_length;
+	size_t			string_length;
 	t_node			*node;
+	char			*key_value;
 
-	if (ht_isempty(table))
+	if (!key)
 		return (NULL);
-	index = ht_hash(table, key);
+	key_value = ft_strdup(key);
+	if (!key_value || ht_isempty(table))
+		return (NULL);
+	index = ht_hash(table, ft_strdup(key));
 	node = table->array[index];
-	while (node)
-	{
-		string_length = ft_strlen(node->key);
-		if (string_length < (int)ft_strlen(key))
-			string_length = ft_strlen(key);
-		if (ft_strncmp(node->key, key, string_length) == 0)
-			return (node->value);
+	while (node && node->key)
+	{	
+		string_length = ft_strlen(node->key);	
+		if (string_length < ft_strlen(key_value))
+			string_length = ft_strlen(key_value);
+		if (ft_strncmp(node->key, key_value, string_length) == 0)
+			return (free(key_value), node->value);
 		node = node->next;
 	}
-	return (NULL);
+	return (free(key_value), NULL);
 }

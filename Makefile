@@ -3,8 +3,10 @@ FILES = Hashtable/ht_get.c \
 	Hashtable/ht_hash.c \
 	Hashtable/ht_new.c \
 	Hashtable/ht_set.c \
+	Hashtable/ht_remove.c \
 	Hashtable/ht_isempty.c \
 	Hashtable/ht_contains.c \
+	Hashtable/ht_replace.c \
 	ht_test.c
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -g
