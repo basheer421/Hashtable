@@ -8,6 +8,7 @@ FILES = Hashtable/ht_get.c \
 	Hashtable/ht_contains.c \
 	Hashtable/ht_replace.c \
 	Hashtable/ht_clear.c \
+	Hashtable/ht_destroy.c \
 	ht_test.c
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -g

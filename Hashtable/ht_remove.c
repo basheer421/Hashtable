@@ -6,7 +6,7 @@
 /*   By: bammar <bammar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 02:10:28 by bammar            #+#    #+#             */
-/*   Updated: 2022/12/24 15:03:08 by bammar           ###   ########.fr       */
+/*   Updated: 2022/12/24 15:41:24 by bammar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,17 +35,29 @@ static void	remove_first_node(t_ht *table, unsigned int index)
 	}
 	else
 	{
+		free(node->key);
+		free(node->value);
 		node->key = NULL;
 		node->value = NULL;
 	}
 	return ;
 }
 
+static void	remove_mid_node(t_node *node)
+{
+	t_node	*temp;
+
+	temp = node->next;
+	node->next = node->next->next;
+	free(temp->value);
+	free(temp->key);
+	free(temp);
+}
+
 void	ht_remove(t_ht *table, const char *key)
 {
 	unsigned int	index;
 	t_node			*node;
-	t_node			*temp;
 	char			*key_value;
 
 	if (ht_isempty(table) || !ht_contains(table, key))
@@ -66,15 +78,9 @@ void	ht_remove(t_ht *table, const char *key)
 	{
 		if (is_samekey(node->next->key, key_value))
 		{
-			temp = node->next;
-			node->next = node->next->next;
-			free(temp->value);
-			free(temp->key);
-			free(temp);
+			remove_mid_node(node);
 			return ;
 		}
 		node = node->next;
 	}
-	node->key = NULL;
-	node->value = NULL;
 }

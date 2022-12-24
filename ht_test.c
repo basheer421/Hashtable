@@ -6,7 +6,7 @@
 /*   By: bammar <bammar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 00:57:07 by bammar            #+#    #+#             */
-/*   Updated: 2022/12/24 15:04:29 by bammar           ###   ########.fr       */
+/*   Updated: 2022/12/24 15:27:01 by bammar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,8 @@ int	main(void)
 	assert(ht_get(table, "key1") != NULL);
 	assert(ht_get(table, "key2") != NULL);
 	assert(ht_get(table, "key3") != NULL);
+
+	ht_destroy(table);
 
 	return (0);
 }

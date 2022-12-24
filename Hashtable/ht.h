@@ -6,7 +6,7 @@
 /*   By: bammar <bammar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 03:04:33 by bammar            #+#    #+#             */
-/*   Updated: 2022/12/24 01:53:06 by bammar           ###   ########.fr       */
+/*   Updated: 2022/12/24 15:26:26 by bammar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,6 @@ int					ht_isempty(t_ht *table);
 void				ht_remove(t_ht *table, const char *key);
 void				ht_replace(t_ht *table, char *key, void *new_value);
 void				ht_clear(t_ht *table);
+void				ht_destroy(t_ht *table);
 
 #endif
