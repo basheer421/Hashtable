@@ -6,7 +6,7 @@
 /*   By: bammar <bammar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 00:52:51 by bammar            #+#    #+#             */
-/*   Updated: 2022/12/24 15:28:42 by bammar           ###   ########.fr       */
+/*   Updated: 2022/12/24 17:05:12 by bammar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ void	*ht_get(t_ht *table, const char *key)
 	index = ht_hash(table, ft_strdup(key));
 	node = table->array[index];
 	while (node && node->key)
-	{	
-		string_length = ft_strlen(node->key);	
+	{
+		string_length = ft_strlen(node->key);
 		if (string_length < ft_strlen(key_value))
 			string_length = ft_strlen(key_value);
 		if (ft_strncmp(node->key, key_value, string_length) == 0)
