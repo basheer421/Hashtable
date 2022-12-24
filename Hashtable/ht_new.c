@@ -6,7 +6,7 @@
 /*   By: bammar <bammar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 00:13:56 by bammar            #+#    #+#             */
-/*   Updated: 2022/12/23 23:04:38 by bammar           ###   ########.fr       */
+/*   Updated: 2022/12/24 14:25:17 by bammar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ t_ht	*ht_new(size_t size)
 	if (!table)
 		return (NULL);
 	table->total_size = size;
-	table->array = malloc(size * sizeof(t_node *));
+	table->array = malloc((size + 1) * sizeof(t_node *));
 	if (!table->array)
 		return (free(table), NULL);
 	i = 0;
@@ -34,6 +34,7 @@ t_ht	*ht_new(size_t size)
 		table->array[i]->value = NULL;
 		table->array[i++]->next = NULL;
 	}
+	table->array[i] = NULL;
 	table->size = 0;
 	return (table);
 }

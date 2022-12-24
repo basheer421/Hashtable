@@ -1,26 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ht_hash.c                                          :+:      :+:    :+:   */
+/*   ht_clear.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bammar <bammar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/18 00:25:12 by bammar            #+#    #+#             */
-/*   Updated: 2022/12/24 14:19:09 by bammar           ###   ########.fr       */
+/*   Created: 2022/12/24 14:16:37 by bammar            #+#    #+#             */
+/*   Updated: 2022/12/24 15:00:02 by bammar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ht.h"
 
-unsigned int	ht_hash(t_ht *table, char *key)
+void	ht_clear(t_ht *table)
 {
-	unsigned int	hash;
-	int				i;
+	char	*reached_key;
+	int		i;
 
-	hash = 5381;
+	if (ht_isempty(table))
+		return ;
 	i = 0;
-	while (key[i])
-		hash = ((hash << 5) + hash) + key[i++];
-	free((void *)key);
-	return (hash % (table->total_size - 1));
+	while (table->array[i] && table->size > 0)
+	{
+		reached_key = table->array[i]->key;
+		while (reached_key != NULL)
+		{			
+			ht_remove(table, reached_key);
+			reached_key = table->array[i]->key;
+		}
+		i++;
+	}
 }

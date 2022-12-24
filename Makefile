@@ -7,6 +7,7 @@ FILES = Hashtable/ht_get.c \
 	Hashtable/ht_isempty.c \
 	Hashtable/ht_contains.c \
 	Hashtable/ht_replace.c \
+	Hashtable/ht_clear.c \
 	ht_test.c
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -g
@@ -25,7 +26,7 @@ clean:
 	(cd ./libft && make clean)
 
 fclean:	clean
-	rm -f $(NAME) libft.a
+	rm -f $(NAME) Hashtable/libft.a
 	(cd ./libft && make fclean)
 
 re:	fclean all

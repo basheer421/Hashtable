@@ -6,7 +6,7 @@
 /*   By: bammar <bammar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 00:57:07 by bammar            #+#    #+#             */
-/*   Updated: 2022/12/24 01:43:24 by bammar           ###   ########.fr       */
+/*   Updated: 2022/12/24 15:04:29 by bammar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,14 +80,21 @@ int	main(void)
 	assert(table->size == 3);
 
 	// Test ht_clear
-	// assert(ht_set(table, "key2", "value2") == 1);
-	// assert(ht_set(table, "key3", "value3") == 1);
-	// assert(table->size == 3);
-	// ht_clear(table);
-	// assert(table->size == 0);
-	// assert(ht_get(table, "key1") == NULL);
-	// assert(ht_get(table, "key2") == NULL);
-	// assert(ht_get(table, "key3") == NULL);
+	assert(table->size == 3);
+	ht_clear(table);
+	assert(table->size == 0);
+	assert(ht_get(table, "key1") == NULL);
+	assert(ht_get(table, "key2") == NULL);
+	assert(ht_get(table, "key3") == NULL);
+
+	assert(ht_set(table, "key1", "value1") == 1);
+	assert(ht_set(table, "key2", "value2") == 1);
+	assert(ht_set(table, "key3", "value3") == 1);
+	assert(table->size == 3);
+		
+	assert(ht_get(table, "key1") != NULL);
+	assert(ht_get(table, "key2") != NULL);
+	assert(ht_get(table, "key3") != NULL);
 
 	return (0);
 }
